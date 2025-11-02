@@ -26,8 +26,13 @@ public class Product {
 
     @Column(name = "category")
     private String category;
-    // 카테고리는 id 또는 코드 값을 참조 받아 다른 entity로 만드는게 관리 측면에서는 좋아보임
-
+    /* 
+        문제 1: 카테고리는 id 또는 코드 값을 참조 받아 다른 entity로 만드는게 설계 측면에서 좋음
+        원인 : 같은 데이터가 너무 많이 중복됨, 하나의 key 데이터가 변경되면 다른 데이터 변경 필요, 유지보수 용이 하지 않음
+        개선안 : category entity를 새로 생성하여 외래키 관계로 연결
+        개선 후 생길 수 있는 문제 :
+        1. 다른 entity로 생성 시 n+1 문제 발생 위험 >> 반환 dto도 추가 생성 하여 반환값을 확실하게 생성해줌
+    */
     @Column(name = "name")
     private String name;
 
