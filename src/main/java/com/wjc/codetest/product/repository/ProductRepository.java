@@ -15,6 +15,8 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
 
     Page<Product> findAllByCategory(String name, Pageable pageable);
 
+    // 문제 : JPQL사용하여 유지보수 힘듬
+    // 개선안 : 추후 Mybatis, 또는 QueryDsl 적용
     @Query("SELECT DISTINCT p.category FROM Product p")
     List<String> findDistinctCategories();
 }

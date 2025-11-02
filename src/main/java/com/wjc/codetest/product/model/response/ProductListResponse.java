@@ -1,8 +1,8 @@
 package com.wjc.codetest.product.model.response;
 
 import com.wjc.codetest.product.model.domain.Product;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.Setter;
 
 import java.util.List;
 
@@ -15,17 +15,11 @@ import java.util.List;
  * @since : 2025-10-27
  */
 @Getter
-@Setter
+@AllArgsConstructor
 public class ProductListResponse {
-    private List<Product> products;
+    private List<ProductResponseDto> products;
     private int totalPages;
     private long totalElements;
     private int page;
 
-    public ProductListResponse(List<Product> content, int totalPages, long totalElements, int number) {
-        this.products = content;
-        this.totalPages = totalPages;
-        this.totalElements = totalElements;
-        this.page = number;
-    }
 }
